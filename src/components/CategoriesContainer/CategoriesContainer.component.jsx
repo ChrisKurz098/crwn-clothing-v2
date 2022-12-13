@@ -3,7 +3,7 @@ import './categories.styles.scss';
 import CatagoryItem from '../CategoryItem/CategoryItems.component';
 
 
-const CategoryContainer = ({categories}) => {
+const CategoriesContainer = ({categories}) => {
 
   return (
     <div className='categories-container'>
@@ -17,4 +17,4 @@ const CategoryContainer = ({categories}) => {
   );
 };
 
-export default CategoryContainer;
+export default CategoriesContainer;
