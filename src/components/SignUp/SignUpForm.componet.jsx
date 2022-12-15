@@ -2,6 +2,8 @@ import { createAuthUserWithEmailAndPassword, createUserDocFromAuth } from "../..
 import { useState } from "react";
 
 import SignupFormInput from "../SignupFormInput/SignupFormInput.component";
+import Button from "../Button/Button.component";
+import './signUpForm-styles.scss';
 
 const defaultFormInput = {
     displayName: '',
@@ -48,8 +50,9 @@ const SignUpForm = () => {
     console.log(formInput);
 
     return (
-        <div>
-            <h1>Sign up with an email and password</h1>
+        <div className="sign-up-container">
+            <h2>Don't have an account</h2>
+            <span>Sign up with an email and password</span>
             <form onChange={handleChange} onSubmit={submitHandler}>
             
                 <SignupFormInput onChange={handleChange}  label={'Display Name'} required type={'text'} name="displayName" value={displayName} />
@@ -60,7 +63,7 @@ const SignUpForm = () => {
 
                 <SignupFormInput onChange={handleChange} label={'Confrim Password'} required type={'password'} name="confirmPassword" value={confirmPassword} />
 
-                <button type="submit">Sign Up</button>
+                <Button type="submit">Sign Up</Button>
 
             </form>
         </div>
