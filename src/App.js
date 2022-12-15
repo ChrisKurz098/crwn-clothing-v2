@@ -1,6 +1,6 @@
 import NavigationBar from "./routes/NavigationBar/NavigationBar.component";
 import Home from "./routes/Home/Home.components";
-import SignIn from "./routes/SignIn/SignIn.component";
+import UserAuth from "./routes/UserAuth/UserAuth.component";
 import { Route, Routes } from "react-router";
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<NavigationBar />}>
           <Route index element={<Home/>} />
-          <Route path="/signin" element={<SignIn/>} />
+          <Route path="/signin" element={<UserAuth/>} />
         </Route>
       </Routes>
 
