@@ -1,3 +1,5 @@
+import './formInput.styles.scss';
+
 const FormInput = ({label, ...otherProps}) => {
     return (
         
