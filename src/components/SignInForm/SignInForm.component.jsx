@@ -5,8 +5,9 @@ import {
     createUserDocFromAuth,
     signInAuthUserWithEmailAndPassword
 } from "../../utils/firebase/firebase.utils";
-import { useEffect, useState } from "react";
-import { getRedirectResult } from "firebase/auth";
+import {  useState, useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
+// import { getRedirectResult } from "firebase/auth";
 
 import FormInput from '../../components/FormInput/FormInput.component';
 import Button from "../../components/Button/Button.component";
@@ -24,6 +25,7 @@ const SignInForm = () => {
     // }, [])
     const [formInput, setFormInput] = useState({ email: '', password: '' });
     const { email, password } = formInput;
+    const {setCurrentUser} = useContext(UserContext)
 
     const singInWithGoogle = async () => {
         const { user } = await signInWithGooglePopup();
@@ -36,7 +38,7 @@ const SignInForm = () => {
 
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log('Logged in: ', user.email);
+            setCurrentUser(user);
         } catch (error) {
 
             switch (error.code) {
@@ -58,7 +60,6 @@ const SignInForm = () => {
         setFormInput(old => ({ ...old, [name]: value }));
     };
 
-    console.log(email, password);
 
     return (
         < div className='sign-in-container' >
