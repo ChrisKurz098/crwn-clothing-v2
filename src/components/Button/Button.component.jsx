@@ -5,11 +5,11 @@
         google: 'google-sign-in',
         inverted: 'inverted'
     };
-const Button = ({ children, buttonType }) => {
+const Button = ({ children, buttonType, onClick, type}) => {
 
 
     return (
-        <button className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}>
+        <button type = {type} className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`} onClick={onClick}>
             {children}
         </button>
     )

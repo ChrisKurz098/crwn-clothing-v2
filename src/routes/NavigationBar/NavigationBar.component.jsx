@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { Outlet, Link } from "react-router-dom";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
 import './navigation.styles.scss';
 
 const NavigationBar = () => {
-    const {currentUser} = useContext(UserContext)
+    const { currentUser } = useContext(UserContext)
 
-    console.log(currentUser)
     return (
         <>
             <nav className="navigation">
@@ -22,9 +22,16 @@ const NavigationBar = () => {
                     <Link className='nav-link' to='/contact'>
                         CONTACT
                     </Link>
-                    <Link className='nav-link' to='/signin'>
-                        SIGN IN
-                    </Link>
+                    {currentUser ? (
+                        <span className='nav-link' onClick={signOutUser}>
+                            SIGN OUT
+                        </span>
+                    ) : (
+                        <Link className='nav-link' to='/signin'>
+                            SIGN IN
+                        </Link>
+                    )}
+
                     <Link className='nav-link' to='/shop'>
                         SHOP
                     </Link>
